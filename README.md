@@ -1,4 +1,4 @@
-# 🎵 MusicIsMyLife
+# 🎵 MusicIsMyLife - 1st team project (Academy)
 
 > **MusicIsMyLife**는 사용자의 **감정**을 기반으로 **음악을 추천**받고, 다른 사용자들과 **생각과 노래를 공유**하며 소통할 수 있는 **커뮤니티 플랫폼**입니다.
 
