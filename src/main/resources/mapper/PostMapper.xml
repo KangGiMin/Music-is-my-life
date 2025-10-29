@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.musicismylife.domain.post.PostMapper">
+
+	<!--게시글 목록 조회 -->
+	<select id="getPostList"
+		resultType="com.musicismylife.domain.post.PostDTO">
+		SELECT *
+		FROM POST
+		ORDER BY POST_ID
+	</select>
+
+	<!-- 게시글 상세 조회 -->
+	<select id="getPost"
+		resultType="com.musicismylife.domain.post.PostDTO">
+		SELECT * FROM POST WHERE POST_ID = #{POST_ID}
+	</select>
+
+	<!-- 감정별 게시글 목록 조회 -->
+	<select id="getPostListByEmotion"
+		resultType="com.musicismylife.domain.post.PostDTO">
+		SELECT *
+		FROM POST
+		WHERE EMOTION_CODE = #{emotionCode}  <!-- EMOTION_CODE가 
+			넘어온 값과 같은 것만! -->
+		ORDER BY POST_ID
+	</select>
+
+	<!-- 조회수 처리 -->
+	<update id="increaseViewCount" parameterType="String">
+		UPDATE post SET
+		VIEW_COUNT = VIEW_COUNT + 1 WHERE POST_ID = #{postID}
+	</update>
+
+	<!-- 게시글 작성 처리 -->
+	<insert id="insertPost">
+		INSERT INTO POST
+		(MEMBER_ID, TITLE, CONTENTS, YOUTUBE_LINK, EMOTION_CODE, CREATED_AT, MEMBER_NICKNAME, EMOTION_NAME)
+		VALUES
+		(#{MEMBER_ID}, #{TITLE}, #{CONTENTS}, #{YOUTUBE_LINK}, #{EMOTION_CODE}, sysdate, #{MEMBER_NICKNAME}, #{EMOTION_NAME})
+	</insert>
+
+  <!-- 게시글 수정 -->
+<update id="updatePost" parameterType="com.musicismylife.domain.post.PostDTO">
+    UPDATE POST
+    SET 
+        TITLE = #{TITLE},
+        CONTENTS = #{CONTENTS},
+        YOUTUBE_LINK = #{YOUTUBE_LINK},
+        EMOTION_CODE = #{EMOTION_CODE},
+        EMOTION_NAME = #{EMOTION_NAME},
+        UPDATED_AT = SYSDATE
+    WHERE 
+        POST_ID = #{POST_ID}
+</update>
+
+<delete id="deletePost" parameterType="String">
+    DELETE FROM POST WHERE POST_ID = #{postID}
+</delete>
+</mapper>

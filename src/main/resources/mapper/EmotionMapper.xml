@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.musicismylife.domain.emotion.EmotionMapper">  
+  <!-- 감정조회 -->
+  <select id="getEmotionList" resultType="com.musicismylife.domain.emotion.EmotionDTO">
+    SELECT *
+    FROM EMOTION_CATEGORY
+    ORDER BY EMOTION_CODE 
+  </select>
+  
+  <!-- 감정 바꾸기 -->
+  <update id="updateEmotion" parameterType="com.musicismylife.domain.emotion.EmotionDTO">
+    UPDATE EMOTION_CATEGORY
+    SET DESCRIPTION = #{DESCRIPTION},
+        YOUTUBE_PLAYLIST_LINK = #{YOUTUBE_PLAYLIST_LINK}
+    WHERE EMOTION_CODE = #{EMOTION_CODE}
+  </update>
+  
+  <!-- 감정 추가하기 -->
+  <insert id="insertEmotion" parameterType="com.musicismylife.domain.emotion.EmotionDTO">
+    INSERT INTO EMOTION_CATEGORY (EMOTION_CODE, DESCRIPTION, YOUTUBE_PLAYLIST_LINK)
+    VALUES (#{EMOTION_CODE}, #{DESCRIPTION}, #{YOUTUBE_PLAYLIST_LINK})
+  </insert>
+  
+  <!-- 감정 삭제하기 -->
+  <delete id="deleteEmotion" parameterType="String">
+    DELETE FROM EMOTION_CATEGORY
+    WHERE EMOTION_CODE = #{emotionCode}
+  </delete>
+  
+  <!-- 감정 코드로 단일 감정 조회 -->
+  <select id="getEmotionByCode" parameterType="String" resultType="com.musicismylife.domain.emotion.EmotionDTO">
+    SELECT EMOTION_CODE, EMOTION_NAME, DESCRIPTION, YOUTUBE_PLAYLIST_LINK
+    FROM EMOTION_CATEGORY
+    WHERE EMOTION_CODE = #{emotionCode}
+  </select>
+  
+</mapper>

@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* 1. 기본 바디 스타일 */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans KR', '맑은 고딕', Arial, sans-serif;
+	background-color: #fafafa;
+	color: #333;
+	line-height: 1.5;
+}
+
+/* 2. 메인 영역 스타일 (가운데 정렬 + 너비 제한) */
+main {
+	max-width: 1000px;
+	margin: 60px auto;
+	padding: 20px 30px;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+/* 3. 링크 스타일 */
+a {
+	display: inline-block;
+	width: 180px;
+	padding: 12px 0;
+	margin: 10px 0;
+	font-size: 1rem;
+	color: white;
+	background-color: #ff6600;
+	border-radius: 30px;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	font-weight: 600;
+}
+
+a:hover {
+	background-color: #e65c00;
+}
+
+/* 4. 구분선 */
+hr {
+	margin: 40px 0;
+	border: none;
+	border-top: 1.5px solid #eee;
+}
+
+/* 5. 폰트 크기 및 강조 */
+h1, h2, h3, h4 {
+	color: #ff6600;
+	font-weight: 700;
+	margin-bottom: 40px;
+}
+
+/* 6. 입력폼 스타일 - 만약 필요하면 */
+input[type="text"], input[type="password"], textarea {
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;
+	border: 1.5px solid #ddd;
+	border-radius: 6px;
+	font-size: 1rem;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+	outline: none;
+	border-color: #ff6600;
+}
